@@ -75,7 +75,7 @@ export default function USP() {
               />
             </div>
 
-            <div dangerouslySetInnerHTML={{ __html: item.text }} />
+            <div className="rich-text-content" dangerouslySetInnerHTML={{ __html: item.text }} />
           </div>
         ))}
       </div>

@@ -107,7 +107,7 @@ export default function Founders() {
                 {f.role}
               </p>
               <div
-                className="text-gray-600 leading-relaxed italic rich-text-content"
+                className="rich-text-content"
                 dangerouslySetInnerHTML={{ __html: f.description }}
               />
             </div>

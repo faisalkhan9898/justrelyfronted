@@ -83,7 +83,7 @@ export default function Landing() {
           {/* Content */}
           <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-6 text-white">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-4 rich-text-heading">
-              <div dangerouslySetInnerHTML={{ __html: slide.title }} />
+              <div className="rich-text-content" dangerouslySetInnerHTML={{ __html: slide.title }} />
             </h1>
 
             <div
@@ -96,9 +96,10 @@ export default function Landing() {
               href={slide.link}
               className="relative inline-flex items-center justify-center w-72 h-12 rounded-full bg-gradient-to-r from-cyan-600 via-yellow-300 to-cyan-600 animate-[gradient_3s_linear_infinite]"
             >
-              <span className="absolute inset-[3px] bg-black rounded-full flex items-center justify-center font-semibold uppercase tracking-wide">
-                {slide.buttonText}
-              </span>
+              <span
+                className="absolute inset-[3px] bg-black rounded-full flex items-center justify-center font-semibold uppercase tracking-wide rich-text-inline"
+                dangerouslySetInnerHTML={{ __html: slide.buttonText }}
+              />
             </a>
           </div>
         </div>

@@ -86,7 +86,7 @@ export default function StackServices() {
 
                 {service.description && (
                   <div
-                    className="text-gray-700 rich-text-content"
+                    className="rich-text-content"
                     dangerouslySetInnerHTML={{ __html: service.description }}
                   />
                 )}

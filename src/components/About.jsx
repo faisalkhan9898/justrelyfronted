@@ -59,7 +59,7 @@ export default function About() {
 
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-3 rich-text-heading">
           {aboutData?.heading ? (
-            <div dangerouslySetInnerHTML={{ __html: aboutData.heading }} />
+            <div className="rich-text-content" dangerouslySetInnerHTML={{ __html: aboutData.heading }} />
           ) : (
             <>
               WELCOME TO <span className="text-yellow-600">JUST RELY</span>
@@ -100,7 +100,7 @@ export default function About() {
         >
           {aboutData?.paragraph ? (
             <div
-              className="text-gray-600 leading-relaxed rich-text-content"
+              className="rich-text-content"
               dangerouslySetInnerHTML={{ __html: aboutData.paragraph }}
             />
           ) : (

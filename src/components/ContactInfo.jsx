@@ -136,7 +136,7 @@ export default function ContactInfo() {
                     {item.title}
                   </h4>
                   <div
-                    className="text-lg font-semibold text-slate-200 group-hover:text-white transition-colors rich-text-content"
+                    className="rich-text-content"
                     dangerouslySetInnerHTML={{ __html: item.value }}
                   />
                 </Wrapper>

@@ -1,32 +1,190 @@
 @import "tailwindcss";
 
 /* Rich Text Editor Styles */
-.rich-text-content p {
-  margin-bottom: 1rem;
+/* Rich Text Editor Styles */
+.rich-text-content {
+  /* Headings */
 }
+
+.rich-text-content h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.rich-text-content h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 1.75rem;
+  margin-bottom: 0.875rem;
+  line-height: 1.3;
+}
+
+.rich-text-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.rich-text-content h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.625rem;
+}
+
+/* Paragraphs */
+.rich-text-content p {
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+}
+
 .rich-text-content p:last-child {
   margin-bottom: 0;
 }
+
+/* Lists */
 .rich-text-content ul {
   list-style-type: disc !important;
   padding-left: 1.5rem !important;
-  margin-bottom: 1rem !important;
+  margin-bottom: 1.25rem !important;
 }
+
 .rich-text-content ol {
   list-style-type: decimal !important;
   padding-left: 1.5rem !important;
-  margin-bottom: 1rem !important;
+  margin-bottom: 1.25rem !important;
 }
+
+.rich-text-content li {
+  margin-bottom: 0.5rem;
+}
+
+/* Blockquote */
+.rich-text-content blockquote {
+  border-left: 4px solid #CA9817;
+  padding-left: 1.5rem;
+  font-style: italic;
+  margin: 1.5rem 0;
+  color: #4b5563;
+}
+
+/* Links */
+.rich-text-content a {
+  color: #2563eb;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.rich-text-content a:hover {
+  color: #1d4ed8;
+}
+
+/* Images */
+.rich-text-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+/* Code */
+.rich-text-content pre {
+  background: #1f2937;
+  color: #f3f4f6;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.rich-text-content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.875em;
+}
+
+.rich-text-content :not(pre)>code {
+  background: #f3f4f6;
+  color: #db2777;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+}
+
+/* Mark/Highlight */
+.rich-text-content mark {
+  background-color: #fef08a;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.125rem;
+}
+
+/* Bold, Italic, etc. */
 .rich-text-content strong {
   font-weight: 700 !important;
 }
+
 .rich-text-content em {
   font-style: italic !important;
 }
 
-.rich-text-heading strong {
-  color: #CA9817 !important; /* Brand yellow */
+.rich-text-content u {
+  text-decoration: underline !important;
 }
+
+.rich-text-content s {
+  text-decoration: line-through !important;
+}
+
+/* Subscript/Superscript */
+.rich-text-content sub {
+  vertical-align: sub;
+  font-size: 0.75em;
+}
+
+.rich-text-content sup {
+  vertical-align: super;
+  font-size: 0.75em;
+}
+
+/* Horizontal Rule */
+.rich-text-content hr {
+  border: 0;
+  border-top: 2px solid #e5e7eb;
+  margin: 2rem 0;
+}
+
+/* Text Alignment Support for TipTap */
+.rich-text-content .text-align-center {
+  text-align: center;
+}
+
+.rich-text-content .text-align-right {
+  text-align: right;
+}
+
+.rich-text-content .text-align-justify {
+  text-align: justify;
+}
+
+/* Inline Rich Text (for buttons, small labels) */
+.rich-text-inline p {
+  display: inline;
+  margin: 0;
+}
+
+.rich-text-inline {
+  display: inline;
+}
+
+/* TipTap Specific Heading Styles for Branding if needed */
+.rich-text-heading strong {
+  color: #CA9817 !important;
+  /* Brand yellow */
+}
+
 .rich-text-heading p {
   display: inline;
 }
@@ -36,15 +194,19 @@
   .input {
     @apply w-full px-5 py-4 border border-gray-200 rounded-lg bg-gray-50/40 focus:outline-none focus:ring-1 focus:ring-[#CA9817] focus:border-[#CA9817] focus:bg-white transition-all text-gray-800 placeholder:text-gray-400 font-medium;
   }
+
   .field-label {
     @apply block text-[11px] font-black text-gray-900 tracking-[0.1em] mb-2 uppercase;
   }
+
   .gold-underline {
     @apply w-14 h-[3px] bg-[#CA9817] mt-3;
   }
+
   .section-title {
     @apply text-3xl font-extrabold text-[#0a1428] tracking-tight;
   }
+
   .info-card {
     @apply bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 overflow-hidden relative;
   }
@@ -54,6 +216,7 @@
   .text-gold {
     @apply text-[#CA9817];
   }
+
   .bg-gold {
     @apply bg-[#CA9817];
   }
@@ -86,7 +249,8 @@
 .value-car:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  border-color: #ca9817; /* Gold border */
+  border-color: #ca9817;
+  /* Gold border */
 }
 
 /* Icon Container */
@@ -94,7 +258,8 @@
   width: 100px;
   height: 100px;
   margin: 0 auto 1.5rem;
-  background: rgba(202, 152, 23, 0.1); /* Light gold tint */
+  background: rgba(202, 152, 23, 0.1);
+  /* Light gold tint */
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -126,7 +291,8 @@
   font-size: 0.95rem;
   font-weight: 600;
   line-height: 1.5;
-  color: #334155; /* Slate text */
+  color: #334155;
+  /* Slate text */
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -135,19 +301,23 @@
 /* Responsive adjustments */
 .values-row {
   display: flex;
-  flex-wrap: nowrap; /* Force one line */
+  flex-wrap: nowrap;
+  /* Force one line */
   gap: 2rem;
   justify-content: flex-start;
   max-width: 100%;
   margin: 0 auto;
   overflow-x: auto;
   padding: 2rem 1rem;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .values-row::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
+  display: none;
+  /* Chrome, Safari and Opera */
 }
 
 @media (min-width: 1280px) {
@@ -170,6 +340,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .value-car,
   .value-car:hover,
   .value-car .ico img {
@@ -178,4 +349,3 @@
     opacity: 1;
   }
 }
-

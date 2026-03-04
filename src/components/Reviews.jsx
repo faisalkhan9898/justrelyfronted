@@ -70,7 +70,7 @@ export default function Reviews() {
             <div className="bg-white/5 backdrop-blur-md border border-white/10
                             rounded-2xl p-10 shadow-xl transition-all duration-500">
               <div
-                className="text-lg leading-relaxed italic mb-8 line-clamp-6 rich-text-content"
+                className="rich-text-content"
                 dangerouslySetInnerHTML={{ __html: reviewsList[index].message }}
               />
 
