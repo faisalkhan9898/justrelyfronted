@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import api, { BASE } from '../api/axois'
+import { stripHtml } from '../utils/stringUtils'
 
 export default function USP() {
   const [visibleItems, setVisibleItems] = useState([])
@@ -75,7 +76,9 @@ export default function USP() {
               />
             </div>
 
-            <div className="rich-text-content" dangerouslySetInnerHTML={{ __html: item.text }} />
+            <div className="text-gray-800 font-medium">
+              {stripHtml(item.text)}
+            </div>
           </div>
         ))}
       </div>

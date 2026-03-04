@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import api, { BASE } from '../api/axois'
+import { stripHtml } from '../utils/stringUtils'
 
 export default function StackServices() {
   const cardRefs = useRef([])
@@ -78,10 +79,10 @@ export default function StackServices() {
 
               {/* Content */}
               <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
-                <h2 className="text-3xl font-bold mb-3">{service.title}</h2>
+                <h2 className="text-3xl font-bold mb-3">{stripHtml(service.title)}</h2>
 
                 {service.subtitle && (
-                  <h4 className="text-gray-500 mb-6">{service.subtitle}</h4>
+                  <h4 className="text-gray-500 mb-6">{stripHtml(service.subtitle)}</h4>
                 )}
 
                 {service.description && (

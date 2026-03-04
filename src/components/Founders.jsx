@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import api, { BASE } from '../api/axois'
+import { stripHtml } from '../utils/stringUtils'
 
 export default function Founders() {
   const titleRef = useRef(null)
@@ -101,10 +102,10 @@ export default function Founders() {
 
               {/* Text */}
               <h3 className="text-xl font-semibold mb-1 text-gray-900">
-                {f.name}
+                {stripHtml(f.name)}
               </h3>
               <p className="text-[#CA9817] font-medium text-sm uppercase tracking-wider mb-4">
-                {f.role}
+                {stripHtml(f.role)}
               </p>
               <div
                 className="rich-text-content"

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import api, { BASE } from '../api/axois'
+import { stripHtml } from '../utils/stringUtils'
 
 
 export default function Landing() {
@@ -102,9 +103,8 @@ export default function Landing() {
                   __html: (function () {
                     const props = [slide.buttonText, slide.btnText, slide.button, slide.btn, slide.text, slide.label, slide.cta, slide.linkText, slide.name, slide.heading];
                     for (let val of props) {
-                      if (val && val.replace(/<[^>]*>?/gm, '').trim().length > 0) {
-                        // Strip <p> tags but keep other inner content
-                        return val.replace(/<\/?p>/gi, '');
+                      if (val && stripHtml(val).length > 0) {
+                        return stripHtml(val);
                       }
                     }
                     return "View Property";

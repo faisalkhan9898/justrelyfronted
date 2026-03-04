@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import api, { BASE } from '../api/axois'
+import { stripHtml } from '../utils/stringUtils'
 import img1 from "../assets/images/13908-1.jpg"
 
 export default function Reviews() {
@@ -76,7 +77,7 @@ export default function Reviews() {
 
               <div>
                 <h4 className="font-bold tracking-widest text-[#CA9817] uppercase">
-                  {reviewsList[index].name}
+                  {stripHtml(reviewsList[index].name)}
                 </h4>
                 {/* <p className="text-xs text-white/60 mt-1 uppercase tracking-tight">
                   {reviewsList[index].role || "Verified Client"}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import api from "../api/axois"
+import { stripHtml } from "../utils/stringUtils"
 
 
 const PhoneIcon = () => (
@@ -135,10 +136,9 @@ export default function ContactInfo() {
                   <h4 className="text-xs font-bold tracking-[0.2em] text-slate-500 mb-3 uppercase">
                     {item.title}
                   </h4>
-                  <div
-                    className="rich-text-content"
-                    dangerouslySetInnerHTML={{ __html: item.value }}
-                  />
+                  <div className="text-white">
+                    {stripHtml(item.value)}
+                  </div>
                 </Wrapper>
               )
             })

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import api, { BASE } from '../api/axois'
+import { stripHtml } from '../utils/stringUtils'
 
 export default function Projects() {
   const refs = useRef([])
@@ -86,7 +87,7 @@ export default function Projects() {
 
                 {/* Text */}
                 <div className="absolute bottom-0 p-6 text-white z-10">
-                  <h3 className="text-lg font-semibold rich-text-content" dangerouslySetInnerHTML={{ __html: project.title }} />
+                  <h3 className="text-lg font-semibold">{stripHtml(project.title)}</h3>
                 </div>
               </div>
             ))
