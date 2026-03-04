@@ -97,8 +97,18 @@ export default function Landing() {
               className="relative inline-flex items-center justify-center w-72 h-12 rounded-full bg-gradient-to-r from-cyan-600 via-yellow-300 to-cyan-600 animate-[gradient_3s_linear_infinite]"
             >
               <span
-                className="absolute inset-[3px] bg-black rounded-full flex items-center justify-center font-semibold uppercase tracking-wide rich-text-inline"
-                dangerouslySetInnerHTML={{ __html: slide.buttonText }}
+                className="absolute inset-[3px] bg-black rounded-full flex items-center justify-center font-semibold uppercase tracking-wide text-white rich-text-inline"
+                dangerouslySetInnerHTML={{
+                  __html: (function () {
+                    const props = [slide.buttonText, slide.btnText, slide.button, slide.btn, slide.text, slide.label, slide.cta, slide.linkText, slide.name, slide.heading];
+                    for (const val of props) {
+                      if (val && val.replace(/<[^>]*>?/gm, '').trim().length > 0) {
+                        return val;
+                      }
+                    }
+                    return "View Property";
+                  })()
+                }}
               />
             </a>
           </div>

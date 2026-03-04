@@ -176,7 +176,8 @@
 }
 
 .rich-text-inline {
-  display: inline;
+  /* display: inline; Removed to allow Tailwind flex classes for centering */
+  color: #fff !important;
 }
 
 /* TipTap Specific Heading Styles for Branding if needed */
