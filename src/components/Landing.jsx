@@ -101,9 +101,10 @@ export default function Landing() {
                 dangerouslySetInnerHTML={{
                   __html: (function () {
                     const props = [slide.buttonText, slide.btnText, slide.button, slide.btn, slide.text, slide.label, slide.cta, slide.linkText, slide.name, slide.heading];
-                    for (const val of props) {
+                    for (let val of props) {
                       if (val && val.replace(/<[^>]*>?/gm, '').trim().length > 0) {
-                        return val;
+                        // Strip <p> tags but keep other inner content
+                        return val.replace(/<\/?p>/gi, '');
                       }
                     }
                     return "View Property";
