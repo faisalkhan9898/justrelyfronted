@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import api from "../api/axois"
+import api from "../api/axios"
 import { stripHtml } from "../utils/stringUtils"
 
 

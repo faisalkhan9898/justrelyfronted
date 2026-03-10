@@ -39,11 +39,25 @@
 /* Paragraphs */
 .rich-text-content p {
   margin-bottom: 1.25rem;
-  line-height: 1.7;
+  line-height: 1;
 }
 
-.rich-text-content p:last-child {
+.rich-text-content p:empty {
   margin-bottom: 0;
+  line-height: 1;
+  font-size: 0.8em;
+}
+
+.rich-text-content p:empty::before {
+  content: '\00a0';
+}
+
+.rich-text-content p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #a8a29e;
+  pointer-events: none;
+  height: 0;
 }
 
 /* Lists */
@@ -349,4 +363,33 @@
     transform: none;
     opacity: 1;
   }
+}
+
+/* Table Support for Rich Text Content */
+.rich-text-content table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  margin: 1.5rem 0;
+  overflow: hidden;
+}
+
+.rich-text-content table td,
+.rich-text-content table th {
+  min-width: 1em;
+  border: 1px solid #9ca3af;
+  padding: 8px 12px;
+  vertical-align: top;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.rich-text-content table th {
+  font-weight: bold;
+  text-align: left;
+  background-color: #f3f4f6;
+}
+
+.rich-text-content .tableWrapper {
+  overflow-x: auto;
 }

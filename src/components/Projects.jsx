@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import api, { BASE } from '../api/axois'
+import api, { BASE } from '../api/axios'
 import { stripHtml } from '../utils/stringUtils'
 
 export default function Projects() {
@@ -86,8 +86,8 @@ export default function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/10" />
 
                 {/* Text */}
-                <div className="absolute bottom-0 p-6 text-white z-10">
-                  <h3 className="text-lg font-semibold">{stripHtml(project.title)}</h3>
+                <div className="absolute bottom-0 p-6 text-white z-10 w-full">
+                  <div className="rich-text-content" dangerouslySetInnerHTML={{ __html: project.title }} />
                 </div>
               </div>
             ))

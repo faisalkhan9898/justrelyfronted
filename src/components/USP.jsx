@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import api, { BASE } from '../api/axois'
+import api, { BASE } from '../api/axios'
 import { stripHtml } from '../utils/stringUtils'
 
 export default function USP() {
@@ -25,7 +25,6 @@ export default function USP() {
     fetchUSP()
   }, [])
 
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -37,48 +36,42 @@ export default function USP() {
           }
         })
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     )
 
-    refs.current.forEach((el) => el && observer.observe(el))
+    refs.current.forEach((ref) => {
+      if (ref) observer.observe(ref)
+    })
+
     return () => observer.disconnect()
   }, [uspList])
 
-
-  if (uspList.length === 0) {
-    return (
-      <section className="py-16 px-4 bg-gray-50 flex items-center justify-center min-h-[400px]">
-        <div className="w-10 h-10 border-4 border-yellow-600 border-t-transparent rounded-full animate-spin"></div>
-      </section>
-    );
-  }
-
   return (
-    <section className="py-16 px-4 bg-gray-50 text-center">
-      {/* Title */}
-      <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-900">
-        OUR USP
-      </h2>
-
-      {/* Grid Area */}
-      <div className="values-row">
-        {uspList.map((item, i) => (
+    <section className="py-20 px-6 bg-white overflow-hidden">
+      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+        {uspList.map((item, index) => (
           <div
-            key={i}
-            ref={(el) => (refs.current[i] = el)}
-            className={`value-car ${visibleItems.includes(i) ? "show" : ""}`}
-            style={{ transitionDelay: `${i * 0.15}s` }}
+            key={index}
+            ref={(el) => (refs.current[index] = el)}
+            className={`flex flex-col items-center p-8 rounded-2xl transition-all duration-700
+                      ${visibleItems.includes(index)
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"}`}
+            style={{ transitionDelay: `${index * 0.15}s` }}
           >
-            <div className="ico">
+            {/* Icon */}
+            <div className="w-16 h-16 mb-6 flex items-center justify-center bg-gray-50 rounded-full">
               <img
                 src={item.icon}
-                alt="icon"
+                alt="usp icon"
+                className="w-8 h-8 object-contain"
               />
             </div>
-
-            <div className="text-gray-800 font-medium">
-              {stripHtml(item.text)}
-            </div>
+            {/* Text */}
+            <div
+              className="rich-text-content"
+              dangerouslySetInnerHTML={{ __html: item.text }}
+            />
           </div>
         ))}
       </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import api, { BASE } from '../api/axois'
+import api, { BASE } from '../api/axios'
 import { stripHtml } from '../utils/stringUtils'
 
 
@@ -21,7 +21,7 @@ export default function Landing() {
           }))
           setSlides(mappedSlides)
         }
-        console.log("Banner Datta.....",res.data)
+        console.log("Banner Datta.....", res.data)
       } catch (error) {
         console.error("Error fetching banners:", error)
       }
@@ -87,13 +87,13 @@ export default function Landing() {
 
             {/* Title */}
             <div
-              // className="text-4xl md:text-6xl font-bold leading-tight  rich-text-content"
+              className="rich-text-content"
               dangerouslySetInnerHTML={{ __html: slide.title }}
             />
 
             {/* Description */}
             <div
-              className="max-w-2xl text-lg md:text-xl mb-8 rich-text-content"
+              className="max-w-2xl  rich-text-content"
               dangerouslySetInnerHTML={{ __html: slide.desc }}
             />
 
@@ -103,7 +103,7 @@ export default function Landing() {
               className="relative inline-flex items-center justify-center w-72 h-12 rounded-full bg-gradient-to-r from-cyan-600 via-yellow-300 to-cyan-600 animate-[gradient_3s_linear_infinite]"
             >
               <span
-                className="absolute inset-[3px] bg-black rounded-full flex items-center justify-center font-semibold uppercase tracking-wide text-white"
+                className="absolute inset-[3px] bg-black rounded-full flex items-center justify-center font-semibold uppercase tracking-wide text-white rich-text-content"
                 dangerouslySetInnerHTML={{
                   __html: slide.buttonText || "View Property"
                 }}

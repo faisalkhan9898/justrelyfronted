@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import api, { BASE } from '../api/axois'
+import api, { BASE } from '../api/axios'
 import { stripHtml } from '../utils/stringUtils'
 
 export default function Founders() {
@@ -101,12 +101,14 @@ export default function Founders() {
               </div>
 
               {/* Text */}
-              <h3 className="text-xl font-semibold mb-1 text-gray-900">
-                {stripHtml(f.name)}
-              </h3>
-              <p className="text-[#CA9817] font-medium text-sm uppercase tracking-wider mb-4">
-                {stripHtml(f.role)}
-              </p>
+              <div
+                className="rich-text-content mb-1"
+                dangerouslySetInnerHTML={{ __html: f.name }}
+              />
+              <div
+                className="rich-text-content text-sm uppercase tracking-wider mb-4"
+                dangerouslySetInnerHTML={{ __html: f.role }}
+              />
               <div
                 className="rich-text-content"
                 dangerouslySetInnerHTML={{ __html: f.description }}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import api, { BASE } from '../api/axois'
+import api from '../api/axios'
 import { stripHtml } from '../utils/stringUtils'
 import img1 from "../assets/images/13908-1.jpg"
 
@@ -22,41 +22,23 @@ export default function Reviews() {
     fetchReviews()
   }, [])
 
-
-  // Auto slide
   useEffect(() => {
     if (reviewsList.length === 0) return
-    const timer = setInterval(() => {
+    const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % reviewsList.length)
-    }, 6000)
-    return () => clearInterval(timer)
+    }, 5000)
+    return () => clearInterval(interval)
   }, [reviewsList.length])
 
-
   return (
-    <section className="relative py-24 px-4 overflow-hidden text-white">
-      {/* Background */}
-      <div
-        className="absolute inset-0 bg-fixed bg-cover bg-center"
-        style={{ backgroundImage: `url(${img1})` }}
-      />
+    <section className="py-20 px-6 bg-slate-900 text-white overflow-hidden">
+      <div className="max-w-4xl mx-auto text-center relative">
+        {/* Title */}
+        <h2 className="text-3xl md:text-4xl font-bold mb-14">
+          What Our <span className="text-[#CA9817]">Clients</span> Say
+        </h2>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br
-                      from-[#0a192f]/95 via-[#112240]/85 to-[#0a192f]/95" />
-
-      {/* Glow blobs */}
-      <div className="absolute -top-24 -left-24 w-[30rem] h-[30rem]
-                      rounded-full blur-[80px] opacity-40
-                      bg-[radial-gradient(circle,#CA9817,transparent)]" />
-
-      <div className="absolute -bottom-24 -right-24 w-[30rem] h-[30rem]
-                      rounded-full blur-[80px] opacity-40
-                      bg-[radial-gradient(circle,#217790,transparent)]" />
-
-      {/* Content */}
-      <div className="relative max-w-3xl mx-auto text-center">
-        {/* Big quote */}
+        {/* Quote Icon */}
         <div className="absolute -top-10 -left-6 text-[6rem] opacity-10">
           ❝
         </div>
@@ -75,13 +57,8 @@ export default function Reviews() {
                 dangerouslySetInnerHTML={{ __html: reviewsList[index].message }}
               />
 
-              <div>
-                <h4 className="font-bold tracking-widest text-[#CA9817] uppercase">
-                  {stripHtml(reviewsList[index].name)}
-                </h4>
-                {/* <p className="text-xs text-white/60 mt-1 uppercase tracking-tight">
-                  {reviewsList[index].role || "Verified Client"}
-                </p> */}
+              <div className="mt-4">
+                <div className="rich-text-content" dangerouslySetInnerHTML={{ __html: reviewsList[index].name }} />
               </div>
             </div>
 
@@ -92,8 +69,7 @@ export default function Reviews() {
                   key={i}
                   onClick={() => setIndex(i)}
                   className={`h-2 rounded-full transition-all
-                    ${i === index ? "w-8 bg-[#CA9817]" : "w-2 bg-white/40"}
-                  `}
+                    ${i === index ? "w-8 bg-[#CA9817]" : "w-2 bg-white/40"}`}
                 />
               ))}
             </div>

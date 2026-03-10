@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import api, { BASE } from '../api/axois'
+import api, { BASE } from '../api/axios'
 import { stripHtml } from '../utils/stringUtils'
 
 export default function StackServices() {
@@ -23,35 +23,28 @@ export default function StackServices() {
     fetchServices()
   }, [])
 
-
   useEffect(() => {
-    const handleScroll = () => {
-      cardRefs.current.forEach((card) => {
-        if (!card) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("opacity-100", "translate-y-0")
+            entry.target.classList.remove("opacity-0", "translate-y-10")
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
 
-        const rect = card.getBoundingClientRect()
-        const triggerPoint = 100
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref)
+    })
 
-        if (rect.top <= triggerPoint) {
-          const progress = Math.min(
-            (triggerPoint - rect.top) / window.innerHeight,
-            1
-          )
-          const scale = 1 - progress * 0.08
-          card.style.transform = `scale(${scale})`
-        } else {
-          card.style.transform = "scale(1)"
-        }
-      })
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    return () => observer.disconnect()
   }, [servicesList])
 
-
   return (
-    <section className="max-w-6xl mx-auto px-4 py-32 space-y-32">
+    <section className="py-20 px-6 max-w-7xl mx-auto space-y-24">
       {loading ? (
         <div className="py-20 flex justify-center">
           <div className="w-10 h-10 border-4 border-yellow-600 border-t-transparent rounded-full animate-spin"></div>
@@ -79,10 +72,16 @@ export default function StackServices() {
 
               {/* Content */}
               <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
-                <h2 className="text-3xl font-bold mb-3">{stripHtml(service.title)}</h2>
+                <div
+                  className="rich-text-content mb-3"
+                  dangerouslySetInnerHTML={{ __html: service.title }}
+                />
 
                 {service.subtitle && (
-                  <h4 className="text-gray-500 mb-6">{stripHtml(service.subtitle)}</h4>
+                  <div
+                    className="rich-text-content mb-6"
+                    dangerouslySetInnerHTML={{ __html: service.subtitle }}
+                  />
                 )}
 
                 {service.description && (

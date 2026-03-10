@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react"
 import img1 from "../assets/images/22-2.png"
 
-import api, { BASE } from '../api/axois'
+
+import api, { BASE } from '../api/axios'
 
 export default function About() {
   const leftRef = useRef(null)
@@ -52,23 +53,21 @@ export default function About() {
   return (
     <section className="py-16 px-4 text-center">
       {/* Header */}
-      <div className="mb-10">
-        <span className="text-sm tracking-widest text-yellow-600 font-semibold">
-          ABOUT US
-        </span>
-
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-3 rich-text-heading">
-          {aboutData?.heading ? (
-            <div className="rich-text-content" dangerouslySetInnerHTML={{ __html: aboutData.heading }} />
-          ) : (
-            <>
-              WELCOME TO <span className="text-yellow-600">JUST RELY</span>
+      <div className="">
+        {aboutData?.heading ? (
+          <div className="rich-text-content" dangerouslySetInnerHTML={{ __html: aboutData.heading }} />
+        ) : (
+          <>
+            <span>
+              ABOUT US
+            </span>
+            <h2>
+              WELCOME TO <span>JUST RELY</span>
               <br />
               (LET'S WALK ON YOUR DREAM)
-            </>
-          )}
-        </h2>
-
+            </h2>
+          </>
+        )}
       </div>
 
 
@@ -83,7 +82,8 @@ export default function About() {
             }`}
         >
           <img
-            src={aboutData?.image ? `${BASE}/uploads/${aboutData.image}` : img1}
+            // src={aboutData?.image ? `${BASE}/uploads/${aboutData.image}` : img1}
+            src={img1}
             alt="about section"
             className="rounded-xl shadow-lg w-full h-auto object-cover"
           />
@@ -93,7 +93,7 @@ export default function About() {
         {/* Text */}
         <div
           ref={rightRef}
-          className={`text-left space-y-6 transition-all duration-700 ${showRight
+          className={`text-left  transition-all duration-700 ${showRight
             ? "opacity-100 translate-x-0"
             : "opacity-0 translate-x-10"
             }`}
@@ -105,14 +105,14 @@ export default function About() {
             />
           ) : (
             <>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="">
                 Just Rely is a Dubai-based company specializing in real estate and
                 technical services. We offer expert property solutions alongside
                 comprehensive maintenance services, including electrical, plumbing,
                 carpentry, painting, and renovations.
               </p>
 
-              <p className="text-gray-600 leading-relaxed">
+              <p className="">
                 With a commitment to quality, reliability, and customer
                 satisfaction, Just Rely is your trusted partner for building,
                 maintaining, and investing in Dubai’s dynamic market.
@@ -123,7 +123,7 @@ export default function About() {
 
           <a
             href="#"
-            className="inline-flex items-center gap-2 font-semibold text-yellow-600 hover:gap-3 transition-all"
+            className=" block text-center gap-2 font-semibold mt-6 hover:gap-3 transition-all"
           >
             Read More →
           </a>
