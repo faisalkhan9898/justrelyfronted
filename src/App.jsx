@@ -18,6 +18,7 @@ import FloatingMenu from './components/FloatingMenu'
 import Landing from './components/Landing'
 import Contact from './pages/Contact'
 import CivilContracting from './pages/CivilContractingWorks'
+import MEPContracting from './pages/MEPContracting'
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/CivilContractingWorks" element={<CivilContracting />} />
+        <Route path="/MEPContracting" element={<MEPContracting />} />
       </Routes>
       <Footer />
       <FloatingMenu />
